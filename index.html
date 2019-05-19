@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="https://schoolonwheels.org/wp-content/themes/schoolonwheels/favicon.png" type="image/ico"/>
+  <link rel="shortcut icon" href="https://schoolonwheels.org/wp-content/themes/schoolonwheels/favicon.png" type="image/x-icon"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+  <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <title>SOW Stem Camp</title>
+</head>
+<body>
+  <div id="site">
+    <div class="columns">
+      <div class="column is-two-fifths is-offset-one-fifth">
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+              <div class="container">
+                <h1 class="title">
+                    School on Wheels: Summer Camp
+                </h1>
+                <h2 class="subtitle">
+                    Programming Lesson
+                </h2>
+              </div>
+            </div>
+        </section>
+      </div>
+      <div class="is-size-6 has-text-right column is-one-fifth">
+        <p>Instructor: <i>Howard Huang</i></p>
+        <p>June 17-18, 2019</p>
+      </div>
+    </div>
+    <hr>
+    <div id="site-content">
+    </div>
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            Site built by <a href="https://github.com/H-Huang">Howard Huang</a>. Source code is 
+            <a href="https://github.com/H-Huang/SOW-STEM-Camp">here</a>.
+          </p> 
+          <p>
+            Credits to the following images 
+            <ul style="list-style-type: none">
+              <li>https://brain-images-ssl.cdn.dixons.com/2/1/10167312/u_10167312.jpg</li>
+              <li>https://images.nvidia.com/geforce-com/international/fortnite-early-access/Banner.jpg</li>
+              <li>http://www.clipartkid.com/images/593/minecraft-logo-related-keywords-suggestions-minecraft-logo-long-BstmO6-clipart.jpg</li>
+              <li>http://cdn2.mhpbooks.com/2016/02/google.jpg</li>
+              <li>http://2.bp.blogspot.com/-U3P09sv-6Io/UFZiCj_wheI/AAAAAAAAJJw/12dawBKANC4/s1600/Cool+Math.tiff</li>
+              <li>http://www.webstartcenter.com/articles/img/onehead-onebody.gif</li>
+              <li>https://css-tricks.com/wp-content/uploads/2018/05/css-art.jpg</li>
+              <li>https://image.shutterstock.com/image-vector/programming-banner-coding-best-languages-260nw-1033853617.jpg</li>
+              <li>https://cdn-images-1.medium.com/max/1600/0*WW-iV1yoPWqUcd5H.</li>
+            </ul>
+          </p>
+          <p>
+            game source code modified from <a href="https://github.com/straker">Steven Lambert</a>
+          </p>
+        </div>
+      </footer>
+  </div>
+
+  <script id="section-template" type="text/x-handlebars-template">
+    {{#each sections}}
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title is-spaced">{{title}} <span class="subtitle is-6">({{estimated_time}})</span></h1>
+        <div class="subtitle is-5">
+          {{{explanation}}}
+        </div>
+      </div>
+    </div>
+    {{#if figures}}
+    <div class="columns is-multiline is-centered is-vcentered">
+      {{#each figures}}
+      <div class="is-one-quarter">
+      </div>
+      <div class="column is-one-quarter">
+        <img style="max-width: 300px;"src="{{this}}">
+      </div>
+      <div class="is-one-quarter">
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if examples}}
+    {{#each examples}}
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <pre>
+          <code>
+            {{this.code}}
+          </code>
+        </pre>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half content has-text-centered">
+        {{{this.description}}}
+      </div>
+    </div>
+    {{/each}}
+    {{/if}}
+    <hr>
+    {{/each}}
+  </script>
+</body>
+<script>
+  function decorate(text) {
+    return `<span class="has-text-weight-bold is-italic">${text}</span>`;
+  }
+
+  var snippet_1 = `
+  <html>
+  </html>
+  `
+
+  var snippet_2 = `
+  <html>
+  <head>
+  </head>
+  <body>
+  </body>
+  </html>
+  `
+
+  var snippet_3 = `
+  <html>
+  <head>
+    <title>Howard's website</title>
+  </head>
+  <body>
+  </body>
+  </html>
+  `
+
+  var snippet_4 = `
+  <html>
+  <head>
+    <title>Howard's website</title>
+  </head>
+  <body>
+    <h1>My name is Howard</h1>
+  </body>
+  </html>
+  `;
+
+  var snippet_5 = `
+  <html>
+  <head>
+    <title>Howard's website</title>
+  </head>
+  <body>
+    <h1>My name is Howard</h1>
+    <h2>Programming is awesome!</h2>
+  </body>
+  </html>
+  `;
+
+  var snippet_6 = `
+  <html>
+  <head>
+    <title>Howard's website</title>
+  </head>
+  <body>
+    <h1>My name is Howard</h1>
+    <h2>Programming is awesome!</h2>
+    <h3>I Like</h3>
+    <ol>
+      <li>Pizza</li>
+      <li>Reading</li>
+      <li>Video games</li>
+    </ol>
+  </body>
+  </html>
+  `;
+
+  var css_snippet_1 = `
+  <html>
+  <head>
+    <title>Howard's website</title>
+    <style>
+      html {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My name is Howard</h1>
+    <h2>Programming is awesome!</h2>
+    <p>I Like</p>
+    <ol>
+      <li>Pizza</li>
+      <li>Reading</li>
+      <li>Video games</li>
+    </ol>
+  </body>
+  </html>
+  `
+  var css_snippet_2 = `
+  <html>
+  <head>
+    <title>Howard's website</title>
+    <style>
+      html {
+        background-color: gray;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My name is Howard</h1>
+    <h2>Programming is awesome!</h2>
+    <p>I Like</p>
+    <ol>
+      <li>Pizza</li>
+      <li>Reading</li>
+      <li>Video games</li>
+    </ol>
+  </body>
+  </html>
+  `
+
+  var game_snippet_1 = `
+  // configurable settings for demonstration purposes
+  var Make_Snake_Appear = false;
+  var Snake_Color = "black";
+  var Make_Apple_Appear = false;
+  var Apple_Color = "black";
+  var Go_In_Correct_Direction = true;
+  var Snake_Speed = 1;
+  var Number_Of_Apples = 1;
+  var Snake_Length = 4;
+
+  // *** WARNING ***
+  // *** DO NOT TOUCH CODE BELOW THIS AREA ***
+  var canvas = document.getElementById('game');
+  var context = canvas.getContext('2d');
+  var grid = 16;
+  var count = 0;
+    
+  var snake = {
+    x: 160,
+    y: 160,
+    
+    // snake Snake_Speed. moves one grid length every frame in either the x or y direction
+    dx: grid,
+    dy: 0,
+    
+    // keep track of all grids the snake body occupies
+    cells: [],
+    
+    // length of the snake. grows when eating an apple
+    maxCells: Snake_Length
+  };
+  // get random whole numbers in a specific range
+  // @see https://stackoverflow.com/a/1527820/2124254
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  var apples = []
+  for (var i = 0; i < Number_Of_Apples; i++) {
+    apples.push(apple = {
+      x: getRandomInt(0, 25) * grid,
+      y: getRandomInt(0, 25) * grid
+    });
+  }
+
+  // game loop
+  function loop() {
+    requestAnimationFrame(loop);
+
+    // slow game loop to 15 fps instead of 60 (60/15 = 4)
+    if (++count < 4) {
+      return;
+    }
+    count = 0;
+    context.clearRect(0,0,canvas.width,canvas.height);
+    // move snake by it's Snake_Speed
+    snake.x += snake.dx * Snake_Speed;
+    snake.y += snake.dy * Snake_Speed;
+    // wrap snake position horizontally on edge of screen
+    if (snake.x < 0) {
+      snake.x = canvas.width - grid;
+    }
+    else if (snake.x >= canvas.width) {
+      snake.x = 0;
+    }
+    
+    // wrap snake position vertically on edge of screen
+    if (snake.y < 0) {
+      snake.y = canvas.height - grid;
+    }
+    else if (snake.y >= canvas.height) {
+      snake.y = 0;
+    }
+    // keep track of where snake has been. front of the array is always the head
+    snake.cells.unshift({x: snake.x, y: snake.y});
+    // remove cells as we move away from them
+    if (snake.cells.length > snake.maxCells) {
+      snake.cells.pop();
+    }
+    // draw apple
+    if (Make_Apple_Appear) {
+      apples.forEach(apple => {
+        context.fillStyle = Apple_Color;
+        context.fillRect(apple.x, apple.y, grid-1, grid-1);
+      })
+    }
+    // draw snake one cell at a time
+    if (Make_Snake_Appear) {
+      context.fillStyle = Snake_Color;
+      snake.cells.forEach(function(cell, index) {
+        
+        // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
+        context.fillRect(cell.x, cell.y, grid-1, grid-1);  
+        // snake ate one of the apples
+        apples.forEach(apple => {
+          if (cell.x === apple.x && cell.y === apple.y) {
+            snake.maxCells++;
+            // canvas is 400x400 which is 25x25 grids 
+            apple.x = getRandomInt(0, 25) * grid;
+            apple.y = getRandomInt(0, 25) * grid;
+          }
+        })
+        // check collision with all cells after this one (modified bubble sort)
+        for (var i = index + 1; i < snake.cells.length; i++) {
+          
+          // snake occupies same space as a body part. reset game
+          if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+            snake.x = 160;
+            snake.y = 160;
+            snake.cells = [];
+            snake.maxCells = Snake_Length;
+            snake.dx = grid;
+            snake.dy = 0;
+            apple.x = getRandomInt(0, 25) * grid;
+            apple.y = getRandomInt(0, 25) * grid;
+          }
+        }
+      });
+    }
+  }
+  // listen to keyboard events to move the snake
+  document.addEventListener('keydown', function(e) {
+    // prevent snake from backtracking on itself by checking that it's 
+    // not already moving on the same axis (pressing left while moving
+    // left won't do anything, and pressing right while moving left
+    // shouldn't let you collide with your own body)
+    var direction = 1;
+    if (!Go_In_Correct_Direction) {
+      direction = -1;
+    }
+
+    // left arrow key
+    if (e.which === 37 && snake.dx === 0) {
+      snake.dx = -grid * direction;
+      snake.dy = 0;
+    }
+    // up arrow key
+    else if (e.which === 38 && snake.dy === 0) {
+      snake.dy = -grid * direction;
+      snake.dx = 0;
+    }
+    // right arrow key
+    else if (e.which === 39 && snake.dx === 0) {
+      snake.dx = grid * direction;
+      snake.dy = 0;
+    }
+    // down arrow key
+    else if (e.which === 40 && snake.dy === 0) {
+      snake.dy = grid * direction;
+      snake.dx = 0;
+    }
+  });
+  // start the game
+  requestAnimationFrame(loop);
+  `;
+
+  var game_snippet_2 = `
+  <!-- 
+  <html>
+  <head>
+    <title>Howard's website</title>
+    <style>
+      html {
+        background-color: gray;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My name is Howard</h1>
+    <h2>Programming is awesome!</h2>
+    <p>I Like</p>
+    <ol>
+      <li>Pizza</li>
+      <li>Reading</li>
+      <li>Video games</li>
+    </ol>
+    <canvas width="400" height="400" style="border-style: solid" id="game"></canvas>
+    <script>
+      // game code goes here...
+    <script>
+  </body>
+  </html>
+  -->
+  `;
+
+  var content = {
+    sections: [
+      {
+        "title": "Introductory Activity",
+        "estimated_time": "10 mins",
+        "explanation": `Go around the room and ask about name, grade, and favorite video game or movie.`,
+      },
+      {
+        "title": "What is Programming?",
+        "estimated_time": "5 mins",
+        "explanation": `Programming is the process of creating a set of ${decorate("instructions")} that tell a ${decorate("computer")} how to perform a task.`,
+        "figures": [
+          "https://brain-images-ssl.cdn.dixons.com/2/1/10167312/u_10167312.jpg",
+          "https://images.nvidia.com/geforce-com/international/fortnite-early-access/Banner.jpg", 
+          "http://www.clipartkid.com/images/593/minecraft-logo-related-keywords-suggestions-minecraft-logo-long-BstmO6-clipart.jpg",],
+        "examples": [],
+      },
+      {
+        "title": "Websites and the Internet",
+        "estimated_time": "10 mins",
+        "explanation": `There are over ${decorate("2 billion")} websites on the Internet, that's ${decorate("2,000,000,000")}. People use a variety of sites for work, education, and of course, games :)`,
+        "figures": [
+          "http://cdn2.mhpbooks.com/2016/02/google.jpg",
+          "http://2.bp.blogspot.com/-U3P09sv-6Io/UFZiCj_wheI/AAAAAAAAJJw/12dawBKANC4/s1600/Cool+Math.tiff",
+        ]
+      },
+      {
+        "title": "Introduction to computers",
+        "estimated_time": "15 mins",
+        "explanation": `We will go over how to open a new file, how to save a file, how to display an HTML file on a browser, and how to refresh a webpage.`,
+      },
+      {
+        "title": "HTML",
+        "estimated_time": "1 hr",
+        "explanation": `${decorate("H")}yper ${decorate("T")}ext ${decorate("M")}arkup ${decorate("L")}anguage is what is used to describe sites on the internet. With HTML, we can describe 
+        what we want to write to the webpage. Let's make our very own website!`,
+        "figures": [
+          "http://www.webstartcenter.com/articles/img/onehead-onebody.gif"
+        ],
+        "examples": [
+          {
+            "code": snippet_1,
+            "description": "We won't see anything displayed yet",
+          },
+          {
+            "code": snippet_2,
+            "description": "We always need to write a head and body.",
+          },
+          {
+            "code": snippet_3,
+            "description": "We still don't see anything yet, but does anyone know what has changed on the website?",
+          },
+          {
+            "code": snippet_4,
+            "description": "Now we can see our name.",
+          },
+          {
+            "code": snippet_5,
+            "description": "Let's write whatever we are thinking about.",
+          },
+          {
+            "code": snippet_6,
+            "description": "Add a list of things that we like.",
+          },
+        ],
+      },
+      {
+        "title": "CSS",
+        "estimated_time": "30 mins",
+        "explanation": `${decorate("C")}ascading ${decorate("S")}tyle ${decorate("S")}heets is used to design your website. We can add our own colors and effects to make it really unique.`,
+        "figures": [
+          "https://css-tricks.com/wp-content/uploads/2018/05/css-art.jpg"
+        ],
+        "examples": [
+          {
+            "code": css_snippet_1,
+            "description": "Add styling so we can get some color on our page!",
+          },
+          {
+            "code": css_snippet_2,
+            "description": "Let's make our text look bigger",
+          },
+        ],
+      },
+      {
+        "title": "Javascript",
+        "estimated_time": "45 mins",
+        "explanation": `Javascript is what we use to add interactivity to our site. This is how we can create games with coding.`,
+        "figures": [
+        ],
+        "examples": [
+          {
+            "code": game_snippet_1,
+            "description": "We are going to need to copy paste this piece of code. Together we will edit this code to make our game",
+          },
+          {
+            "code": game_snippet_2,
+            "description": "Then place our code into the website like this."
+          },
+        ],
+      },
+      {
+        "title": "Our site",
+        "estimated_time": "15 mins",
+        "explanation": `Congratulations, you made it! <a href="example_site.html">Here</a> is an example of our completed site with our game.`,
+      },
+      {
+        "title": "Summary",
+        "estimated_time": "15 mins",
+        "explanation": `You can do a lot of cool things with programming! It's a unique skill that require a lot of writing, logic, math, and analytical thinking. But with enough practice, anyone can do it!`,
+        "figures": [
+          "https://image.shutterstock.com/image-vector/programming-banner-coding-best-languages-260nw-1033853617.jpg",
+          "https://cdn-images-1.medium.com/max/1600/0*WW-iV1yoPWqUcd5H.",
+        ]
+      },
+    ]
+  };
+</script>
+<script type="text/javascript" defer>
+  var source = document.getElementById("section-template").innerHTML;
+  var template = Handlebars.compile(source);
+  var html = template(content);
+  document.getElementById("site-content").innerHTML = html;
+</script>
+<script>
+function startGame() {
+  myGamePiece = new component(30, 30, "red", 10, 120);
+  myGamePiece.gravity = 0.05;
+  myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+  myGameArea.start();
+}
+
+var myGameArea = {
+  canvas : document.createElement("canvas"),
+  start : function() {
+    this.canvas.width = 480;
+    this.canvas.height = 270;
+    this.context = this.canvas.getContext("2d");
+    document.getElementById("site-content").innerHTML = this.canvas
+    this.frameNo = 0;
+  },
+  clear : function() {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+}
+</script>
+<style>
+  #site {
+    padding: 50px 0px;
+  }
+</style>
+</html>
